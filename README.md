@@ -227,6 +227,8 @@ app.get('/color/:choice', function(request, response){
 
 When you want even more flexibility, **query string parameters** can be included with each request.
 
+![http://i.giphy.com/uHEqSttWHv476.gif](http://i.giphy.com/uHEqSttWHv476.gif)
+
 Let's see query params in action. Go to [https://google.com/search?q=kittens&tbm=isch](https://google.com/search?q=kittens&tbm=isch).
 
 #### Query String Review
@@ -343,7 +345,7 @@ Since we're identifying a single resource, it's best to use url parameters (aka 
 // Which Taco?
 app.get('/api/tacos/:id', function(request, response){
   var index = request.params.id;
-  var selection = tacos[id] || 'Sorry, that\'s not a taco option';
+  var selection = tacos[index] || 'Sorry, that\'s not a taco option';
   response.json( selection );
 });
 
