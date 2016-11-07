@@ -345,7 +345,7 @@ Since we're identifying a single resource, it's best to use url parameters (aka 
 // Which Taco?
 app.get('/api/tacos/:id', function(request, response){
   var index = request.params.id;
-  var selection = tacos[id] || 'Sorry, that\'s not a taco option';
+  var selection = tacos[index] || 'Sorry, that\'s not a taco option';
   response.json( selection );
 });
 
