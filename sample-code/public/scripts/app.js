@@ -14,7 +14,7 @@ $(document).ready(function(){
 });
 
 
-function handleSuccess(json) { 
+function handleSuccess(json) {
   // takes an array of albums and renders them as an unordered list
   var albums = json;
   var outputHtml = '<ul>';
