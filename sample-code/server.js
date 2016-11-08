@@ -3,11 +3,15 @@
 
 //require express in our app
 var express = require('express');
+//require body-parser
+var bodyParser = require('body-parser');
 // generate a new express app and call it 'app'
 var app = express();
 
 // serve static files in public
 app.use(express.static('public'));
+//including body parser
+app.use(bodyParser.urlencoded({ extended: false }));
 
 var albums = [
   {
@@ -44,6 +48,14 @@ app.get('/', function (req, res) {
 
 app.get('/api/albums', function(req,res) {
   res.json(albums);
+});
+
+app.post('/api/albums', function citiesCreate(request, response) {
+var name = request.body.name;
+var artist = request.body.artist;
+var newAlbum = { title: name, artist: artist };
+albums.push(newAlbum);
+response.json(albums);
 });
 
 app.listen(process.env.PORT || 3000, function () {

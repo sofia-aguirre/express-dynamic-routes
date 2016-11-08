@@ -272,7 +272,7 @@ Reset your server and go to [localhost:3000/thank?name=jane](localhost:3000/than
   app.get('/multiply', function(request, response){
     var x = request.query.x;
     var y = request.query.y;
-    var total = x*y;
+    var total = parseInt(x)*parseInt(y);
     response.send( total + " is the result");
   });
   ```
@@ -286,12 +286,12 @@ Reset your server and go to [localhost:3000/thank?name=jane](localhost:3000/than
   ```js
   // server.js
   // Calculator
-  app.get('/add', function(request, response){
-    var x = request.query.x;
-    var y = request.query.y;
-    var total = x+y;
-    response.send( total + " is the result");
-  });
+app.get('/add', function(request, response){
+  var x = request.query.x;
+  var y = request.query.y;
+  var total = parseInt(x) +parseInt(y);
+  response.send( total + " is the result");
+});
   ```
   </details>
 
