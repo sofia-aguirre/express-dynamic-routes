@@ -197,7 +197,7 @@ What if we want to create an app that can dynamically say hello to anyone?
 **URL parameters** let us add dynamic routes to the application. In Express, parameters in a URL are indicated by a colon `:` and any variable name you want to use. We'll use `:name` for the example below.
 
 ```js
-app.get("/greet/:name", function (request, response) {
+app.get("/greetings/:name", function (request, response) {
   response.send( "Hello, " + request.params.name );
 });
 ```
@@ -206,7 +206,13 @@ In the route above, `:name` is considered a route or URL parameter. Inside the r
 
 | Request Type | Request Path | Response
 | :--- | :--- | :--- |
-| `GET` | `/greet/:name` | `Hello, :name` |
+| `GET` | `/greetings/:name` | `Hello, :name` |
+
+<details><summary>What URL would you visit to see the results of the route above? Can you make the site say hello with your name?</summary>
+
+
+Reset your server and go to [localhost:3000/greetings/jane](localhost:3000/greetings/jane), but use your name instead if it's not Jane!
+</details>
 
 ### Independent Practice: Pick A Color
 
