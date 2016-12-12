@@ -19,6 +19,7 @@ Hard-coded routes like `/about`, `/home`, and `/contact` will only take a websit
 - Create more flexible, dynamic routes with parameterized route urls.
 - Process data sent to a server through query strings.
 - Process data sent from named form fields with `POST` requests.
+- Identify Express routing patterns that can be used for PUT, PATCH, and DELETE requests.
 
 
 ### Where should we be now?
