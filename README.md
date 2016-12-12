@@ -322,35 +322,35 @@ Of course, you might combine both in some cases: `/posts/33/comments?limit=50`
 
 1. Hardcode some data in your main server file. This will stand in for database data until we learn how to connect a database.
 
-``` javascript
-var tacos = [
-                "Soft Taco",
-                "Crunchy Taco",
-                "Super Taco"
-            ];
-```
+  ``` javascript
+  var tacos = [
+                  "Soft Taco",
+                  "Crunchy Taco",
+                  "Super Taco"
+              ];
+  ```
 
 1. We'd like a route that will allow you to access a single taco by its index in the array. For example, sending index 2 would trigger a server response with the text "Super Taco".  What kind of parameters would be most appropriate for this route, query parameters or url parameters?
 
-<details><summary>click for answer</summary>
-Since we're identifying a single resource, it's best to use url parameters (aka route parameters).
-</details>
+  <details><summary>click for answer</summary>
+  Since we're identifying a single resource, it's best to use url parameters (aka route parameters).
+  </details>
 
 1. Create the route you planned in your server file. Following the pattern from the example earlier, your endpoint should include `/api`.
 
-<details><summary>click for answer</summary>
-```js
-// server.js
+  <details><summary>click for answer</summary>
+  ```js
+  // server.js
 
-// Which Taco?
-app.get('/api/tacos/:id', function(request, response){
-  var index = request.params.id;
-  var selection = tacos[index] || 'Sorry, that\'s not a taco option';
-  response.json( selection );
-});
+  // Which Taco?
+  app.get('/api/tacos/:id', function(request, response){
+    var index = request.params.id;
+    var selection = tacos[index] || 'Sorry, that\'s not a taco option';
+    response.json( selection );
+  });
 
-```
-</details>
+  ```
+  </details>
 
 
 ### POST
@@ -398,6 +398,8 @@ function handleError(jqXHR, status, error){
   console.log('error:', error);
 }
 ```
+
+Either of those options requires an HTML view with a form.  You can also make HTTP requests with a GUI like Postman or a command line tool like `curl`. Specify `application/x-www-form-urlencoded` (or `-d` for `curl`) for easier compatability with our Express server. 
 
 #### Server-side `POST` Request Handling
 
