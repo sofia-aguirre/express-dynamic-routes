@@ -19,6 +19,7 @@ Hard-coded routes like `/about`, `/home`, and `/contact` will only take a websit
 - Create more flexible, dynamic routes with parameterized route urls.
 - Process data sent to a server through query strings.
 - Process data sent from named form fields with `POST` requests.
+- Identify Express routing patterns that can be used for PUT, PATCH, and DELETE requests.
 
 
 ### Where should we be now?
@@ -196,7 +197,7 @@ What if we want to create an app that can dynamically say hello to anyone?
 **URL parameters** let us add dynamic routes to the application. In Express, parameters in a URL are indicated by a colon `:` and any variable name you want to use. We'll use `:name` for the example below.
 
 ```js
-app.get("/greet/:name", function (request, response) {
+app.get("/greetings/:name", function (request, response) {
   response.send( "Hello, " + request.params.name );
 });
 ```
@@ -205,7 +206,13 @@ In the route above, `:name` is considered a route or URL parameter. Inside the r
 
 | Request Type | Request Path | Response
 | :--- | :--- | :--- |
-| `GET` | `/greet/:name` | `Hello, :name` |
+| `GET` | `/greetings/:name` | `Hello, :name` |
+
+<details><summary>What URL would you visit to see the results of the route above? Can you make the site say hello with your name?</summary>
+
+
+Reset your server and go to [localhost:3000/greetings/jane](localhost:3000/greetings/jane), but use your name instead if it's not Jane!
+</details>
 
 ### Independent Practice: Pick A Color
 
@@ -322,35 +329,35 @@ Of course, you might combine both in some cases: `/posts/33/comments?limit=50`
 
 1. Hardcode some data in your main server file. This will stand in for database data until we learn how to connect a database.
 
-``` javascript
-var tacos = [
-                "Soft Taco",
-                "Crunchy Taco",
-                "Super Taco"
-            ];
-```
+  ``` javascript
+  var tacos = [
+                  "Soft Taco",
+                  "Crunchy Taco",
+                  "Super Taco"
+              ];
+  ```
 
 1. We'd like a route that will allow you to access a single taco by its index in the array. For example, sending index 2 would trigger a server response with the text "Super Taco".  What kind of parameters would be most appropriate for this route, query parameters or url parameters?
 
-<details><summary>click for answer</summary>
-Since we're identifying a single resource, it's best to use url parameters (aka route parameters).
-</details>
+  <details><summary>click for answer</summary>
+  Since we're identifying a single resource, it's best to use url parameters (aka route parameters).
+  </details>
 
 1. Create the route you planned in your server file. Following the pattern from the example earlier, your endpoint should include `/api`.
 
-<details><summary>click for answer</summary>
-```js
-// server.js
+  <details><summary>click for answer</summary>
+  ```js
+  // server.js
 
-// Which Taco?
-app.get('/api/tacos/:id', function(request, response){
-  var index = request.params.id;
-  var selection = tacos[index] || 'Sorry, that\'s not a taco option';
-  response.json( selection );
-});
+  // Which Taco?
+  app.get('/api/tacos/:id', function(request, response){
+    var index = request.params.id;
+    var selection = tacos[index] || 'Sorry, that\'s not a taco option';
+    response.json( selection );
+  });
 
-```
-</details>
+  ```
+  </details>
 
 
 ### POST
@@ -398,6 +405,8 @@ function handleError(jqXHR, status, error){
   console.log('error:', error);
 }
 ```
+
+Either of those options requires an HTML view with a form.  You can also make HTTP requests with a GUI like Postman or a command line tool like `curl`. Specify `application/x-www-form-urlencoded` (or `-d` for `curl`) for easier compatability with our Express server. 
 
 #### Server-side `POST` Request Handling
 
