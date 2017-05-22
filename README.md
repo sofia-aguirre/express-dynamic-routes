@@ -45,13 +45,13 @@ Let's start a simple **Express** application.
   touch server.js
   ```
 
-1. Use `npm init` to create a `package.json`:
+2. Use `npm init` to create a `package.json`:
 
   ```bash
   npm init
   ```
 
-1. Install Express and open the project directory in your text editor:
+3. Install Express and open the project directory in your text editor:
 
   ```bash
   npm install --save express
@@ -70,9 +70,9 @@ Let's start a simple **Express** application.
   ```
 
 
-#####Check for Understanding
+##### Check for Understanding
 
-<details><summary>Summarize the effects of the two `npm` commands above.</summary>
+<details><summary>Summarize the effects of the two npm commands above.</summary>
 
 * Node Package Manager keeps track of the various libraries and third-party packages of code used in a Node project.  
 
@@ -108,7 +108,7 @@ The above two `npm` commands will be necessary for every new web application tha
 
   ```
 
-1. Start the server:
+2. Start the server:
 
   ```bash
   node server.js
@@ -116,7 +116,7 @@ The above two `npm` commands will be necessary for every new web application tha
 
 ##### Check for Understanding
 
-<details><summary>Visit `localhost:3000/` in your browser. Why don't we see anything yet? How can we show something here?</summary>
+<details><summary>Visit localhost:3000/ in your browser. Why don't we see anything yet? How can we show something here?</summary>
 
 There aren't any routes yet! Add the following to the routes section of your `server.js` file and visit `localhost:3000/` again:
 
@@ -210,8 +210,8 @@ In the route above, `:name` is considered a route or URL parameter. Inside the r
 
 <details><summary>What URL would you visit to see the results of the route above? Can you make the site say hello with your name?</summary>
 
+Reset your server and go to [http://localhost:3000/greetings/jane](http://localhost:3000/greetings/jane), but use your name instead if it's not Jane!
 
-Reset your server and go to [localhost:3000/greetings/jane](localhost:3000/greetings/jane), but use your name instead if it's not Jane!
 </details>
 
 ### Independent Practice: Pick A Color
@@ -219,6 +219,7 @@ Reset your server and go to [localhost:3000/greetings/jane](localhost:3000/greet
 Create a route that responds with "You picked: blue" or "You picked: green" depending on a parameter in its path. For instance, if I visit `localhost:3000/pick-a-color/orange` in the browser, I should see the name of the color I chose (orange) as the response.
 
 <details><summary>click for answer</summary>
+
 ```js
 // server.js
 // Pick A Color Route
@@ -227,6 +228,7 @@ app.get('/color/:choice', function(request, response){
   response.send('Your color is: ' + choice);
 });
 ```
+
 </details>
 
 
@@ -262,8 +264,8 @@ app.get("/thank", function (request, response) {
 
 <details><summary>What URL would you visit to see the results of the route above? Can you make the site say thank you with your name?</summary>
 
-
 Reset your server and go to [localhost:3000/thank?name=jane](localhost:3000/thank?name=jane), but use your name instead if it's not Jane!
+
 </details>
 
 
@@ -273,6 +275,7 @@ Reset your server and go to [localhost:3000/thank?name=jane](localhost:3000/than
 
 
   <details><summary>click for answer</summary>
+
   ```js
   // server.js
   // Calculator
@@ -283,6 +286,7 @@ Reset your server and go to [localhost:3000/thank?name=jane](localhost:3000/than
     response.send( total + " is the result");
   });
   ```
+
   </details>
 
 
@@ -290,6 +294,7 @@ Reset your server and go to [localhost:3000/thank?name=jane](localhost:3000/than
 
 
   <details><summary>click for answer</summary>
+
   ```js
   // server.js
   // Calculator
@@ -300,6 +305,7 @@ app.get('/add', function(request, response){
   response.send( total + " is the result");
 });
   ```
+
   </details>
 
 ### Choosing Parameter Types
@@ -315,7 +321,7 @@ Common cases for **Request URL Parameters**:
 * **major components of the app**  -  GET `/users/2a98cef`
 * **expressing hierarchies**       -  GET `/departments/44/employees/2`
 
-> Request Params are not always nonsense IDs. Names can be used in some systems: `/departments/physics/employees/LutherRichard`
+> Request params are not always nonsense IDs. Names can be used in some systems: `/departments/physics/employees/LutherRichard`
 
 Common cases for **Query Parameters**:
 * **searches**             -  GET `/?q=kittens`
@@ -337,26 +343,26 @@ Of course, you might combine both in some cases: `/posts/33/comments?limit=50`
               ];
   ```
 
-1. We'd like a route that will allow you to access a single taco by its index in the array. For example, sending index 2 would trigger a server response with the text "Super Taco".  What kind of parameters would be most appropriate for this route, query parameters or url parameters?
+2. We'd like a route that will allow you to access a single taco by its index in the array. For example, sending index 2 would trigger a server response with the text "Super Taco".  What kind of parameters would be most appropriate for this route, query parameters or url parameters?
 
   <details><summary>click for answer</summary>
   Since we're identifying a single resource, it's best to use url parameters (aka route parameters).
   </details>
 
-1. Create the route you planned in your server file. Following the pattern from the example earlier, your endpoint should include `/api`.
+3. Create the route you planned in your server file. Following the pattern from the example earlier, your endpoint should include `/api`.
 
   <details><summary>click for answer</summary>
+
   ```js
   // server.js
-
   // Which Taco?
   app.get('/api/tacos/:id', function(request, response){
     var index = request.params.id;
     var selection = tacos[index] || 'Sorry, that\'s not a taco option';
     response.json( selection );
   });
-
   ```
+
   </details>
 
 
@@ -406,7 +412,7 @@ function handleError(jqXHR, status, error){
 }
 ```
 
-Either of those options requires an HTML view with a form.  You can also make HTTP requests with a GUI like Postman or a command line tool like `curl`. Specify `application/x-www-form-urlencoded` (or `-d` for `curl`) for easier compatability with our Express server. 
+Either of those options requires an HTML view with a form.  You can also make HTTP requests with a GUI like Postman or a command line tool like `curl`. Specify `application/x-www-form-urlencoded` (or `-d` for `curl`) for easier compatability with our Express server.
 
 #### Server-side `POST` Request Handling
 
