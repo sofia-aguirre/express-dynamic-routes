@@ -314,7 +314,7 @@ app.get('/add', function(request, response){
 
 * **query string parameters:** `http://localhost:3000/icecream?flavor=SOMEFLAVOR`
 
-Generally if the parameter is identifying a specific _entity_ or _resource_ on it's own, you most likely want request/url parameters.  If it is an optional parameter for a route, you should use query string parameters.
+Generally, if the parameter is identifying an individual _entity_ or _resource_, you most likely want request/url parameters.  If it is an optional parameter for a route, you should use query string parameters.
 
 Common cases for **Request URL Parameters**:
 * **database/item IDs**            -  GET `/contacts/348`
