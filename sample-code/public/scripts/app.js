@@ -14,18 +14,22 @@ $(document).ready(function(){
 });
 
 
-function handleSuccess(json) {
+const handleSuccess = (json) => {
   // takes an array of albums and renders them as an unordered list
-  var albums = json;
-  var outputHtml = '<ul>';
-  albums.forEach(function(album) {
-    outputHtml = outputHtml + "<li>" + album.artist + " -- " + album.title + "</li>";
-  });
-  outputHtml += '</ul>';
+  let albums = json;
+  // iterate through json response - return a joined array of data with html encoding
+  let outputHtml = `
+    <ul>
+      ${albums.map((album) => `
+        <li>
+          ${album.artist} -- ${album.title}
+        </li>`).join('')}
+    </ul>`;
+    console.log(outputHtml)
   $('#albumTarget').html(outputHtml);
 }
 
-function handleError(e) {
+const handleError = (jqXHR, status, error) => {
   console.log('uh oh');
-  $('#albumTarget').text('Failed to load albums, is the server working?');
+  $('#albumTarget').text(`Failed to load albums, is the server working? Error: ${error}`);
 }
