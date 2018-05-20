@@ -333,6 +333,9 @@ Of course, you might combine both in some cases: `/posts/33/comments?limit=50`
 
 ### Independent Practice: Which Taco?
 
+
+<img src="https://media.giphy.com/media/EsDCYBUQM0KlO/giphy.gif">
+
 1. Hardcode some data in your main server file. This will stand in for database data until we learn how to connect a database.
 
   ``` javascript
