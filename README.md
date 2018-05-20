@@ -92,8 +92,8 @@ The above two `npm` commands will be necessary for every new web application tha
   `server.js`
   ```js
   // REQUIREMENTS
-  var express = require('express');
-  var app = express();
+  const express = require('express');
+  const app = express();
 
   // MIDDLEWARE
   app.use(express.static('public'));
@@ -102,7 +102,7 @@ The above two `npm` commands will be necessary for every new web application tha
   // ... coming soon
 
   // SERVER START
-  app.listen(3000, function () {
+  app.listen(3000, () => {
     console.log("HTTP server listening at localhost:3000");
   });
 
@@ -121,7 +121,7 @@ The above two `npm` commands will be necessary for every new web application tha
 There aren't any routes yet! Add the following to the routes section of your `server.js` file and visit `localhost:3000/` again:
 
 ```js
-app.get("/", function(request, response) {
+app.get("/", (request, response) => {
   // send back the response: 'Hello World'
   response.send('Hello World');
 });
@@ -151,11 +151,11 @@ Let's build two more routes into our application:
 
 ```js
 // REQUIREMENTS
-var express = require('express'),
-  app = express();
+const express = require('express');
+const app = express();
 
 //DATA (temporary until we know how to use databases)
-var burgers = [
+const burgers = [
   'Hamburger',
   'Cheese Burger',
   'Vegetable Burger'
@@ -168,22 +168,22 @@ var tacos = [
 ];
 
 // ROUTES
-app.get("/", function (request, response) {
+app.get("/", (request, response) => {
   response.send("Hello World");
 });
 
-app.get("/api/burgers", function (request, response) {
+app.get("/api/burgers",  (request, response) => {
   //send all the burgers     
   response.json(burgers);
 });
 
-app.get("/api/tacos", function (request, response) {
+app.get("/api/tacos",  (request, response) => {
   //send all the tacos       
   response.json(tacos);
 });
 
 // SERVER START
-app.listen(3000, function () {
+app.listen(3000, () => {
   console.log("HTTP server listening at localhost:3000");
 });
 
@@ -197,7 +197,7 @@ What if we want to create an app that can dynamically say hello to anyone?
 **URL parameters** let us add dynamic routes to the application. In Express, parameters in a URL are indicated by a colon `:` and any variable name you want to use. We'll use `:name` for the example below.
 
 ```js
-app.get("/greetings/:name", function (request, response) {
+app.get("/greetings/:name", (request, response) => {
   response.send( "Hello, " + request.params.name );
 });
 ```
@@ -223,8 +223,8 @@ Create a route that responds with "You picked: blue" or "You picked: green" depe
 ```js
 // server.js
 // Pick A Color Route
-app.get('/color/:choice', function(request, response){
-  var choice = request.params.choice;
+app.get('/color/:choice', (request, response) => {
+  let choice = request.params.choice;
   response.send('Your color is: ' + choice);
 });
 ```
@@ -253,9 +253,9 @@ Let's see query params in action. Go to [https://google.com/search?q=kittens&tbm
 In Express, query string parameters are available in the `request.query` object. Let's add our first route to practice query params.
 
 ```js
-app.get("/thank", function (request, response) {
+app.get("/thank", (request, response) => {
   console.log(request.query);
-  var name = request.query.name;
+  let name = request.query.name;
   response.send('Thank you, ' + name + '!');
 });
 ```
@@ -279,11 +279,11 @@ Reset your server and go to [localhost:3000/thank?name=jane](localhost:3000/than
   ```js
   // server.js
   // Calculator
-  app.get('/multiply', function(request, response){
-    var x = request.query.x;
-    var y = request.query.y;
-    var total = parseInt(x)*parseInt(y);
-    response.send( total + " is the result");
+  app.get('/multiply', (request, response) => {
+    let x = request.query.x;
+    let y = request.query.y;
+    let total = parseInt(x)*parseInt(y);
+    response.send( `${total} is the result`);
   });
   ```
 
@@ -298,11 +298,11 @@ Reset your server and go to [localhost:3000/thank?name=jane](localhost:3000/than
   ```js
   // server.js
   // Calculator
-app.get('/add', function(request, response){
-  var x = request.query.x;
-  var y = request.query.y;
-  var total = parseInt(x) +parseInt(y);
-  response.send( total + " is the result");
+app.get('/add', (request, response) => {
+  let x = request.query.x;
+  let y = request.query.y;
+  let total = parseInt(x) +parseInt(y);
+  response.send( `${total} is the result`);
 });
   ```
 
@@ -336,7 +336,7 @@ Of course, you might combine both in some cases: `/posts/33/comments?limit=50`
 1. Hardcode some data in your main server file. This will stand in for database data until we learn how to connect a database.
 
   ``` javascript
-  var tacos = [
+  const tacos = [
                   "Soft Taco",
                   "Crunchy Taco",
                   "Super Taco"
@@ -356,9 +356,9 @@ Of course, you might combine both in some cases: `/posts/33/comments?limit=50`
   ```js
   // server.js
   // Which Taco?
-  app.get('/api/tacos/:id', function(request, response){
-    var index = request.params.id;
-    var selection = tacos[index] || 'Sorry, that\'s not a taco option';
+  app.get('/api/tacos/:id', (request, response) => {
+    let index = request.params.id;
+    let selection = tacos[index] || 'Sorry, that\'s not a taco option';
     response.json( selection );
   });
   ```
@@ -401,14 +401,14 @@ $.ajax({
   error: handleCityCreateError
 });
 
-function handleCityCreateSuccess(responseData) {
+const handleCityCreateSuccess = responseData => {
   console.log("city was successfully created!");
-  console.log("the name of the new city entered is ", responseData.name);
+  console.log(`The name of the new city entered is ${responseData.name}`);
   // render book to page
 }
 
-function handleError(jqXHR, status, error){
-  console.log('error:', error);
+const handleError =(jqXHR, status, error) => {  
+  console.log(`error: ${error}`);
 }
 ```
 
@@ -422,7 +422,7 @@ In other words, **both the request type and request path must match for the serv
 
 ```js
 // server.js
-app.post('/api/cities', function citiesCreate(request, response) {
+app.post('/api/cities', citiesCreate(request, response) => {
   // save the posted data
 });
 ```
@@ -465,7 +465,7 @@ To add the `body-parser` middleware to your app:
 2. Require `body-parser` in your server file:
 
   ```js
-  var bodyParser = require('body-parser');
+  const bodyParser = require('body-parser');
   ```
 
 3. Include the middleware in the app with `app.use`. (The url encoding is configuration.)
@@ -480,9 +480,9 @@ In any routes receiving `POST`ed data, access that data using `request.body`.
 
 ```js
 app.post('/api/cities', function citiesCreate(request, response) {
-  var name = request.body.name;
-  var desc = request.body.description;
-  var newCity = { name: name, description: desc };
+  let name = request.body.name;
+  let desc = request.body.description;
+  let newCity = { name: name, description: desc };
   // if we have a cities array in our app (pre-database):
   cities.push(newCity);
   response.json(cities);
