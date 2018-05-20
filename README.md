@@ -236,7 +236,7 @@ app.get('/color/:choice', (request, response) => {
 
 When you want even more flexibility, **query string parameters** can be included with each request.
 
-![http://i.giphy.com/uHEqSttWHv476.gif](http://i.giphy.com/uHEqSttWHv476.gif)
+<img src="https://i.giphy.com/uHEqSttWHv476.gif">
 
 Let's see query params in action. Go to [https://google.com/search?q=kittens&tbm=isch](https://google.com/search?q=kittens&tbm=isch).
 
