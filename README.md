@@ -54,7 +54,7 @@ Let's start a simple **Express** application.
 3. Install Express and open the project directory in your text editor:
 
   ```bash
-  npm install --save express
+  npm install express
   atom .
   ```
 
@@ -78,7 +78,7 @@ Let's start a simple **Express** application.
 
 * The `npm init` command helps you set up `package.json`, which stores important information about the project.  
 
-* `npm install --save express` tells the Node Package Manager to download and install the Express library for this particular project.  The `--save` flag lets NPM know that we will be downloading and using `express` for this project and to save it into the project's `package.json`.  
+* `npm install  express` tells the Node Package Manager to download and install the Express library for this particular project.  The `install` command lets NPM know that we will be downloading and using `express` for this project and to save it into the project's `package.json`.  
 
 The above two `npm` commands will be necessary for every new web application that uses Express.  Other packages can also be installed as above.
 
@@ -462,7 +462,7 @@ To add the `body-parser` middleware to your app:
 1. Install the `body-parser` module for the project:
 
   ```bash
-  npm install --save body-parser
+  npm install body-parser
   ```
 
 2. Require `body-parser` in your server file:
